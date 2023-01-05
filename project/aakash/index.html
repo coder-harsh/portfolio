@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+<html>
+<meta name="theme-color" content="#ffc13b" />
+<head>
+<title>Extraakash</title>
+    <link rel="icon" type="image" href="images/5ba1f1e437b9fb1cb7e96e82_favicon.png">
+    <meta content="Extraakash" property="og:title"/>
+    <meta content="Your magic bullet to better brand growth." name="description"/>
+    
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+<!-- Custom Theme files -->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Studeon Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--webfont-->
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:300italic,400italic,600italic,400,300,600,700' rel='stylesheet' type='text/css'>
+<!--//webfont-->
+<!--Animation-->
+<script src="js/wow.min.js"></script>
+<link href="css/animate.css" rel='stylesheet' type='text/css' />
+<script>
+	new WOW().init();
+</script>
+</head>
+    	<style>
+	
+		#bodhol {
+			position: fixed;
+			left: 0;
+			top: 0;
+			overflow: hidden;
+			z-index: 0;
+		}
+		</style>
+		<div id="bodhol"> 
+		  <script src="js/sketch.js">
+				
+				</script> 
+		  <script>
+				
+				// ----------------------------------------
+				// Particle
+				// ----------------------------------------
+		
+				function Particle( x, y, radius ) {
+					this.init( x, y, radius );
+				}
+		
+				Particle.prototype = {
+		
+					init: function( x, y, radius ) {
+		
+						this.alive = true;
+		
+						this.radius = radius || 10;
+						this.wander = 0.15;
+						this.theta = random( TWO_PI );
+						this.drag = 0.92;
+						this.color = '#fff';
+		
+						this.x = x || 0.0;
+						this.y = y || 0.0;
+		
+						this.vx = 0.0;
+						this.vy = 0.0;
+					},
+		
+					move: function() {
+		
+						this.x += this.vx;
+						this.y += this.vy;
+		
+						this.vx *= this.drag;
+						this.vy *= this.drag;
+		
+						this.theta += random( -0.5, 0.5 ) * this.wander;
+						this.vx += sin( this.theta ) * 0.1;
+						this.vy += cos( this.theta ) * 0.1;
+		
+						this.radius *= 0.96;
+						this.alive = this.radius > 0.5;
+					},
+		
+					draw: function( ctx ) {
+		
+						ctx.beginPath();
+						ctx.arc( this.x, this.y, this.radius, 0, TWO_PI );
+						ctx.fillStyle = this.color;
+						ctx.fill();
+					}
+				};
+		
+				// ----------------------------------------
+				// Example
+				// ----------------------------------------
+		
+				var MAX_PARTICLES = 280;
+				var COLOURS = [ '#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423' ];
+		
+				var particles = [];
+				var pool = [];
+		
+				var demo = Sketch.create({
+					container: document.getElementById( 'bodhol' ),
+				});
+		
+				demo.setup = function() {
+		
+					// Set off some initial particles.
+					var i, x, y;
+		
+					for ( i = 0; i < 20; i++ ) {
+						x = ( demo.width * 0.5 ) + random( -100, 100 );
+						y = ( demo.height * 0.5 ) + random( -100, 100 );
+						demo.spawn( x, y );
+					}
+				};
+		
+				demo.spawn = function( x, y ) {
+					
+					var particle, theta, force;
+		
+					if ( particles.length >= MAX_PARTICLES )
+						pool.push( particles.shift() );
+		
+					particle = pool.length ? pool.pop() : new Particle();
+					particle.init( x, y, random( 5, 40 ) );
+		
+					particle.wander = random( 0.5, 2.0 );
+					particle.color = random( COLOURS );
+					particle.drag = random( 0.9, 0.99 );
+		
+					theta = random( TWO_PI );
+					force = random( 2, 8 );
+		
+					particle.vx = sin( theta ) * force;
+					particle.vy = cos( theta ) * force;
+		
+					particles.push( particle );
+				};
+		
+				demo.update = function() {
+		
+					var i, particle;
+		
+					for ( i = particles.length - 1; i >= 0; i-- ) {
+		
+						particle = particles[i];
+		
+						if ( particle.alive ) particle.move();
+						else pool.push( particles.splice( i, 1 )[0] );
+					}
+				};
+		
+				demo.draw = function() {
+		
+					demo.globalCompositeOperation  = 'lighter';
+		
+					for ( var i = particles.length - 1; i >= 0; i-- ) {
+						particles[i].draw( demo );
+					}
+				};
+		
+				demo.mousemove = function() {
+		
+					var particle, theta, force, touch, max, i, j, n;
+		
+					for ( i = 0, n = demo.touches.length; i < n; i++ ) {
+		
+						touch = demo.touches[i], max = random( 1, 4 );
+						for ( j = 0; j < max; j++ ) {
+						  demo.spawn( touch.x, touch.y );
+						}
+		
+					}
+				};
+				
+				</script> 
+		</div>
+<body>
+	<div class="header box css3-shadow" id="head"">
+ 	<div class="container">
+	  <div class="header-top">
+	        <div class="logo wow bounceInLeft" data-wow-delay="0.4s">
+				<a href="index.html"><img src="images/logo.png" alt=""/></a>
+			 </div>
+		     <div class="h_menu4"><!-- start h_menu4 -->
+				<a class="toggleMenu" href="#">Menu</a>
+				<ul class="nav">
+					<li class="active"><a class="scroll" href="index.html">Home</a></li>
+						<li><a href="#about" class="scroll">About</a></li>
+						<li><a href="portfolio.html">Portfolio</a>
+						<li><a href="feature.html">Features</a>
+							<ul>
+								<li><a href="feature.html">Typography</a></li>
+								<li><a href="feature.html">Shortcodes</a></li>
+								<li><a href="feature.html">Columns</a></li>
+								<li><a href="feature.html">Pricing plans</a></li>
+								<li><a href="feature.html">Alerts</a></li>
+								<li><a href="feature.html">Services</a></li>
+							</ul>
+						</li>
+					<li><a href="#blog" class="scroll">Blog</a></li>
+					<li><a href="contact.html">Contact</a></li>
+
+				</ul>
+				<script type="text/javascript" src="js/nav.js"></script>
+			</div><!-- end h_menu4 -->
+			<div class="social_icons wow bounceInRight" data-wow-delay="0.4s">
+					<ul>
+						<li><a href="#"><i class="facebook"></i></a></li>
+						<li><a href="#"><i class="twitter"></i></a></li>
+						<li><a href="#"><i class="rss"></i></a></li>
+						<li><a href="#"><i class="viemo"></i></a></li>
+						<li><a href="#"><i class="youtube"></i></a></li>
+						<li><a href="#"><i class="linkedin"></i></a></li>
+					</ul>
+				</div>
+
+			<div class="clearfix"> </div>
+			
+		  </div><!-- end header_main4 -->
+	</div>
+</div>
+<!--start-slider-->
+	<div class="slider-bg">
+		<div class="container">
+			<div class="grid-1">
+				<div class="col-md-5 left-grid-1 wow bounceInLeft" data-wow-delay="0.4s">
+					<h1>WELCOME</h1>	
+					<h2>TO THE</h2><h3>SOLUTION</h3>
+				</div>
+				<div class="col-md-7 right-grid-1 wow bounceInRight" data-wow-delay="0.7s">
+					<div class="slider">
+						<div class="callbacks_container">
+								<ul class="rslides" id="slider">
+									<li>
+									<img src="images/slide1.png" class="img-responsive" alt="" />
+									</li>
+									<li>
+									<img src="images/slide2.png" class="img-responsive" alt="" />
+									</li>
+									<li>
+									<img src="images/slide3.png" class="img-responsive" alt="" />
+									</li>
+									<li>
+									<img src="images/slide1.png" class="img-responsive" alt="" />
+									</li>
+								 </ul>
+							</div>
+						</div>
+					</div>	
+				 </script><script src="js/responsiveslides.min.js"></script>
+						   <script>
+					    $(function () {
+					      $("#slider").responsiveSlides({
+					      	auto: true,
+					      	nav: true,
+					      	speed: 500,
+					        namespace: "callbacks",
+					        pager: true,
+					      });
+					    });
+					  </script>
+
+                    </div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+<!--//end-slider-->
+	<!--start-services-->
+		<div id="about" class="service-section">
+			<div class="container">
+				<div class="serve-grids wow bounceIn animated" data-wow-delay="0.4s">
+					<div class="col-md-4 services-section-grid">
+						<div class="services-section-grid-head">
+							<div class="service-icon">
+								<i class="rocket"></i>
+							</div>
+							<div class="service-icon-heading">
+								<h4>SKYROCKETING REACH</h4>
+								<p>With the potential of reaching millions of people daily, our experiences can help you grow exponentially organically.</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+						<div class="col-md-4 services-section-grid">
+						<div class="services-section-grid-head">
+							<div class="service-icon">
+								<i class="plan"></i>
+							</div>
+							<div class="service-icon-heading">
+								<h4>EASY SHARING&nbsp;</h4>
+								<p>Share your effects with a single click on all Meta platforms or simply share/embed a link to redirect others to your effect.&nbsp;</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+						<div class="col-md-4 services-section-grid lost">
+						<div class="services-section-grid-head">
+							<div class="service-icon">
+								<i class="book"></i>
+							</div>
+							<div class="service-icon-heading">
+							  <h4>multi platform availability&nbsp;</h4>
+								<p>Expand your presence with our AR experiences letting you reach multiple platforms with a single effect! &nbsp; &nbsp; &nbsp; &nbsp;</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+					<div class="serve-grids two  wow bounceIn animated" data-wow-delay="0.4s">
+					<div class="col-md-4 services-section-grid act">
+						<div class="services-section-grid-head">
+							<div class="service-icon">
+								<i class="arrow"></i>
+							</div>
+							<div class="service-icon-heading">
+								<h4>tiny file sizes&nbsp;</h4>
+						      <p>Annoyed of waiting for files to download?
+						      Our experiences are designed to be super
+							    light and load the effect within seconds.
+                            </div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+						<div class="col-md-4 services-section-grid">
+						<div class="services-section-grid-head">
+							<div class="service-icon">
+								<i class="download"></i>
+							</div>
+							<div class="service-icon-heading">
+								<h4>OFFLINE ACCESIBILITY&nbsp;</h4>
+								<p>No need for an active internet connection to try on the immersive experiences. Just download the effect once and that's it!</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+						<div class="col-md-4 services-section-grid lost">
+						<div class="services-section-grid-head">
+							<div class="service-icon">
+								<i class="cloud"></i>
+							</div>
+							<div class="service-icon-heading">
+								<h4>cloud storage&nbsp;</h4>
+							  <p>Running your own&nbsp; external server 24/7 to</p>
+								<p>host your effects is a thing of the past. All effects are stored to cloud free of cost.</p>
+                            </div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<!--//end-services-->
+			<!--start-mid-section-->
+			<div class="container">
+				<div class="mid-section">
+						<div class="mid-top wow fadeInUpBig animated animated" data-wow-delay="0.4s">
+							<div class="col-md-10 mid-text">
+							 <h3>Hey! Looking for effective ways to reach out to your audience?</h3>
+							<p>You have come to the right place! Whether you are an individual or a brand, Boost your reach organically with our tailormade AR experiences.  </p>
+							</div>
+							<div class="col-md-2 mid-button">
+								<a href="mailto:aakash.mansukhani@gmail.com?subject=AR experience requirement! ""> Contact us </a>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+		    <!--//end-mid-section-->  
+			<!--/port-section-->
+			<div id="features" class="port-section">
+				<div class="container">
+				<h2>TEMPLATES&nbsp;</h2>
+					<div class="port-grids">
+						<div class="col-md-3 port-grid wow zoomInLeft animated">
+							<a href="portfolio.html"><img src="images/p1.jpg" class="img-responsive" alt="" /></a>
+							<div class="box_type">AR FILTER</div>
+							<div class="box-hover">
+								<ul class="port-icons">
+								<li><i class="per"></i></li>
+								<li><i class="loca"></i></li>
+								</ul>
+							</div>
+							<div class="text">
+								<a href="portfolio.html"><h3>Happy birthDay effect</h3>  
+								</a>
+								<p>Modern times require modern gifts! Surprise your friends with an customized birthday AR effect! </p>
+						  </div>
+					  </div>
+						<div class="col-md-3 port-grid wow zoomInLeft animated" >
+							<a href="portfolio.html"><img src="images/p2.jpg" class="img-responsive" alt="" /></a>
+							<div class="box_type">AR FILTER</div>
+							<div class="box-hover">
+								<ul class="port-icons">
+								<li><i class="per"></i></li>
+								<li><i class="loca"></i></li>
+								</ul>
+							</div>
+							<div class="text">
+								<a href="portfolio.html"><h3>Event/Fest Effect</h3>
+								</a>
+								<p>Promote your event/fest on social media with an theme based AR effect with sponsor banners! </p>
+							</div>
+						</div>
+						<div class="col-md-3 port-grid wow zoomInRight animated">
+							<a href="portfolio.html"><img src="images/p3.jpg" class="img-responsive" alt="" /></a>
+							<div class="box_type">AR FILTER</div>
+							<div class="box-hover">
+								<ul class="port-icons">
+								<li><i class="per"></i></li>
+								<li><i class="loca"></i></li>
+								</ul>
+							</div>
+							<div class="text">
+								<a href="portfolio.html"><h3>Randomiser Effect&nbsp;</h3>
+								</a>
+								<p>Engage your audience with an randomiser effect and create an trend of your own! </p>
+							</div>
+						</div>
+						<div class="col-md-3 port-grid lost wow zoomInRight animated">
+							<a href="portfolio.html"><img src="images/p4.jpg" class="img-responsive" alt="" /></a>
+							<div class="box_type">AR FILTER</div>
+							<div class="box-hover">
+								<ul class="port-icons">
+								<li><i class="per"></i></li>
+								<li><i class="loca"></i></li>
+								</ul>
+							</div>
+							<div class="text">
+								<a href="portfolio.html"><h3>Catch the item effect</h3></a>
+								<p>Publish a simple light-weight fun game to your profile to increase your engagement time! </p>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+				  </div>
+			  </div>
+			</div>
+			<!--start-bottom-section-->
+				<div class="container">
+					<div class="bottom-section">
+							<div class="bottom-top wow fadeInDownBig animated animated" data-wow-delay="0.4s">
+								<div class="col-md-10 bottom-text">
+								 <h4>Subscribe to our newsletter! We hate spam as much as you do, so no worries.</h4>
+                                                                  <br>
+								<h5>Be the first ones to know about our upcoming and published filters, while getting creative insights of the AR creation process!</h5>
+								</div>
+								<div class="col-md-2 story"><h4 class="stories"><span><a href="#"><img src="images/mail.png" class="img-responsive" alt="" /></a></span></h4></div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+		    <!--//end-bottom-section--> 
+			<!--/start-blog-section-->
+			<div id="blog" class="blog-section">
+				<div class="container">
+				<h3>OUR BLOGGY</h3>
+					<div class="blog-grids">
+						<div class="col-md-8 blog-left">
+						   <div class="col-md-6 left-img wow bounceInLeft animated" data-wow-delay="0.4s">
+								<a href="single.html"><img src="images/b1.jpg" class="img-responsive" alt="" /></a>
+								<a href="single.html"><h4>Just a cool blog post title here.</h4></a>
+								<ul class="blog-icons">
+									<li><i class="pencil"></i></li>
+									<li><i class="date"></i></li>
+								</ul>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis nulla vel dolor ultrices blandit nec sit amet. turpis, ipsum dolor sit amet, consectetur adipiscing elit. </p>
+								<a class="read" href="single.html">Read more <span> </span></a>
+						   </div>
+								   <div class="col-md-6 left-img two wow bounceIn animated" data-wow-delay="0.4s">
+									<a href="single.html"><img src="images/b2.jpg" class="img-responsive" alt="" /></a>
+									<a href="single.html"><h4>Just a cool blog post title here.</h4></a>
+										<ul class="blog-icons">
+											<li><a href="single.html"><i class="cam"></i></a></li>
+											<li><i class="date"></i></li>
+										</ul>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis nulla vel dolor ultrices blandit nec sit amet. turpis, ipsum dolor sit amet, consectetur adipiscing elit. </p>
+										<a class="read" href="single.html">Read more <span> </span></a>
+								 </div>
+						    </div>
+						<div class="col-md-4 testimonal wow bounceInRight animated" data-wow-delay="0.4s">
+								<h3>testimonials</h3>
+							<div class="test-grid">
+								<div class="col-md-3 test-img">
+								<img src="images/t1.jpg" class="img-responsive" alt="" />
+								</div>
+								<div class="col-md-9 test-text">
+									<h4>Very pleased with the cool services provided.</h4>
+									<p>Linda Scott / Webdesigner <a href="#">http://www.mywebsite.com</a></p>
+								</div>
+							<div class="clearfix"> </div><p class="test"><span> </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis nulla vel dolor ultrices blandit nec sit amet. turpis. </p>
+							</div>
+									<div class="test-grid second">
+								<div class="col-md-3 test-img">
+								<img src="images/p3.jpg" class="img-responsive" alt="" />
+								</div>
+								<div class="col-md-9 test-text">
+									<h4>Very pleased with the cool services provided.</h4>
+									<p>Linda Scott / Webdesigner <a href="#">http://www.mywebsite.com</a></p>
+								</div>
+							<div class="clearfix"> </div><p class="test"><span> </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis nulla vel dolor ultrices blandit nec sit amet. turpis. </p>
+							</div>
+						<div class="clearfix"> </div>
+					</div>
+					 <div class="clearfix"> </div>
+				</div>
+			</div>
+		</div>
+			<!--/start-footer-section-->
+			<div class="footer-section">
+				<div class="container">
+					<div class="footer-grids wow bounceIn animated" data-wow-delay="0.4s">
+						<div class="col-md-3 footer-grid">
+						<h4>About US</h4>
+						<div class="border2"></div>
+						  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.</p>
+						  <p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis est felis.</p>
+						</div>
+						<div class="col-md-3 footer-grid tags">
+								<h4>the tags</h4>
+								<div class="border2"></div>
+							<ul class="tag">
+								<li><a href="#">Awesome</a></li>
+								<li><a href="#">Strategy</a></li>
+								<li><a href="#">Photography</a></li>
+								<li><a href="#">Development</a></li>
+								<li><a href="#">Css</a></li>
+								<li><a href="#">photoshop</a></li>
+								<li><a href="#">Html</a></li>
+								<li><a href="#">Awesome</a></li>
+								<li><a href="#">Strategy</a></li>
+								<li><a href="#">Photoshop</a></li>
+								<li><a href="#">Html</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 footer-grid tweet">
+								<h4>latest tweets</h4>
+								<div class="border2"></div>
+								<div class="icon-3-square">
+										<a href="#"><i class="square-3"></i></a>
+									</div>
+							<div class="icon-text">
+								<p>I like this awesome freebie. Check it out<a href="#"> @http://t.co/9vslJFpW </a></p>
+								<h5>About 15 mins</h5>
+							</div>
+								<div class="clearfix"></div>
+								<div class="icon-3-square">
+										<a href="#"><i class="square-3"></i></a>
+								</div>
+								<div class="icon-text">
+								    <p>I like this awesome freebie. Check it out<a href="#"> @http://t.co/9vslJFpW </a></p>
+									<h5>About 15 mins</h5>
+								</div>
+								<div class="clearfix"></div>
+						</div>
+						<div class="col-md-3 footer-grid flickr">
+								<h4>flickr feed</h4>
+								<div class="border2"></div>
+								<div class="flickr-grids">
+										<div class="flickr-grid">
+											<a href="#"><img src="images/f1.png" alt=" " title="CEO" /></a>
+										</div>
+										<div class="flickr-grid">
+											<a href="#"><img src="images/f2.png" alt=" " title="GM" /></a>
+										</div>
+										<div class="flickr-grid">
+											<a href="#"><img src="images/f3.png" alt=" " title="CEO" /></a>
+										</div>
+										<div class="clearfix"> </div>
+										
+										<div class="flickr-grid">
+											<a href="#"><img src="images/f4.png" alt=" " title="GM" /></a>
+										</div>
+										<div class="flickr-grid">
+											<a href="#"><img src="images/f3.png" alt=" " title="CEO" /></a>
+										</div>
+										<div class="flickr-grid">
+											<a href="#"><img src="images/f2.png" alt=" " title="GM" /></a>
+										</div>
+								<div class="clearfix"> </div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+			</div>
+		</div>
+	<!--//end-footer-section-->
+			<!--/start-copyright-section-->
+				<div class="copyright">
+					<div class="container">
+					<div class="logo2  wow bounceInLeft" data-wow-delay="0.4s"><a href="index.html"><img src="images/logo2.png" alt=""/ title="logo" /></a></div>
+					<p class="write  wow bounceInRight" data-wow-delay="0.4s">Copyright &copy; 2015  All rights  Reserved | Template by &nbsp;<a href="http://w3layouts.com">W3layouts</a></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			
+			<!--//end-copyright-section-->
+			<!--start-smoth-scrolling-->
+			<script type="text/javascript" src="js/move-top.js"></script>
+			<script type="text/javascript" src="js/easing.js"></script>
+			<script type="text/javascript">
+								jQuery(document).ready(function($) {
+									$(".scroll").click(function(event){		
+										event.preventDefault();
+										$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+									});
+								});
+								</script>
+							<!--start-smoth-scrolling-->
+						<script type="text/javascript">
+									$(document).ready(function() {
+										/*
+										var defaults = {
+								  			containerID: 'toTop', // fading element id
+											containerHoverID: 'toTopHover', // fading element hover id
+											scrollSpeed: 1200,
+											easingType: 'linear' 
+								 		};
+										*/
+										
+										$().UItoTop({ easingType: 'easeOutQuart' });
+										
+									});
+								</script>
+		<a href="#head" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+			
+</body>
+</html>

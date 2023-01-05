@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<style>
+	#bodhol {
+		position: fixed;
+		left: 0;
+		top: 0;
+		overflow: hidden;
+		z-index: -0.1;
+	}
+</style>
+<div id="bodhol">
+	<script src="js/sketch.js">
+
+	</script>
+	<script>
+
+		// ----------------------------------------
+		// Particle
+		// ----------------------------------------
+
+		function Particle(x, y, radius) {
+			this.init(x, y, radius);
+		}
+
+		Particle.prototype = {
+
+			init: function (x, y, radius) {
+
+				this.alive = true;
+
+				this.radius = radius || 10;
+				this.wander = 0.15;
+				this.theta = random(TWO_PI);
+				this.drag = 0.92;
+				this.color = '#fff';
+
+				this.x = x || 0.0;
+				this.y = y || 0.0;
+
+				this.vx = 0.0;
+				this.vy = 0.0;
+			},
+
+			move: function () {
+
+				this.x += this.vx;
+				this.y += this.vy;
+
+				this.vx *= this.drag;
+				this.vy *= this.drag;
+
+				this.theta += random(-0.5, 0.5) * this.wander;
+				this.vx += sin(this.theta) * 0.1;
+				this.vy += cos(this.theta) * 0.1;
+
+				this.radius *= 0.96;
+				this.alive = this.radius > 0.5;
+			},
+
+			draw: function (ctx) {
+
+				ctx.beginPath();
+				ctx.arc(this.x, this.y, this.radius, 0, TWO_PI);
+				ctx.fillStyle = this.color;
+				ctx.fill();
+			}
+		};
+
+		// ----------------------------------------
+		// Example
+		// ----------------------------------------
+
+		var MAX_PARTICLES = 280;
+		var COLOURS = ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900', '#FF4E50', '#F9D423'];
+
+		var particles = [];
+		var pool = [];
+
+		var demo = Sketch.create({
+			container: document.getElementById('bodhol'),
+		});
+
+		demo.setup = function () {
+
+			// Set off some initial particles.
+			var i, x, y;
+
+			for (i = 0; i < 20; i++) {
+				x = (demo.width * 0.5) + random(-100, 100);
+				y = (demo.height * 0.5) + random(-100, 100);
+				demo.spawn(x, y);
+			}
+		};
+
+		demo.spawn = function (x, y) {
+
+			var particle, theta, force;
+
+			if (particles.length >= MAX_PARTICLES)
+				pool.push(particles.shift());
+
+			particle = pool.length ? pool.pop() : new Particle();
+			particle.init(x, y, random(5, 40));
+
+			particle.wander = random(0.5, 2.0);
+			particle.color = random(COLOURS);
+			particle.drag = random(0.9, 0.99);
+
+			theta = random(TWO_PI);
+			force = random(2, 8);
+
+			particle.vx = sin(theta) * force;
+			particle.vy = cos(theta) * force;
+
+			particles.push(particle);
+		};
+
+		demo.update = function () {
+
+			var i, particle;
+
+			for (i = particles.length - 1; i >= 0; i--) {
+
+				particle = particles[i];
+
+				if (particle.alive) particle.move();
+				else pool.push(particles.splice(i, 1)[0]);
+			}
+		};
+
+		demo.draw = function () {
+
+			demo.globalCompositeOperation = 'lighter';
+
+			for (var i = particles.length - 1; i >= 0; i--) {
+				particles[i].draw(demo);
+			}
+		};
+
+		demo.mousemove = function () {
+
+			var particle, theta, force, touch, max, i, j, n;
+
+			for (i = 0, n = demo.touches.length; i < n; i++) {
+
+				touch = demo.touches[i], max = random(1, 4);
+				for (j = 0; j < max; j++) {
+					demo.spawn(touch.x, touch.y);
+				}
+
+			}
+		};
+
+	</script>
+</div>
+
+<head>
+	<title>Studeon a Corporate Category Flat Bootstarp responsive Website Template|Portfolio :: w3layouts</title>
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="js/jquery.min.js"></script>
+	<!-- Custom Theme files -->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="css/custom.css">
+	<!-- Custom Theme files -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Studeon Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<script
+		type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!--webfont-->
+	<link
+		href='http://fonts.googleapis.com/css?family=Oswald:400,700,300|Open+Sans:300italic,400italic,600italic,400,300,600,700'
+		rel='stylesheet' type='text/css'>
+	<!--//webfont-->
+	<!--Animation-->
+	<script src="js/wow.min.js"></script>
+	<link href="css/animate.css" rel='stylesheet' type='text/css' />
+	<script>
+		new WOW().init();
+	</script>
+	<!--Light-Box-->
+	<script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="css/swipebox.css">
+	<script src="js/jquery.swipebox.min.js"></script>
+	<script type="text/javascript">
+		jQuery(function ($) {
+			$(".swipebox").swipebox();
+		});
+	</script>
+	<!--End-Light-Box-->
+	<!--Script-for-gallery-Here-->
+	<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+
+			var filterList = {
+
+				init: function () {
+
+					// MixItUp plugin
+					// http://mixitup.io
+					$('#portfoliolist').mixitup({
+						targetSelector: '.portfolio',
+						filterSelector: '.filter',
+						effects: ['fade'],
+						easing: 'snap',
+						// call the hover effect
+						onMixEnd: filterList.hoverEffect()
+					});
+
+				},
+
+				hoverEffect: function () {
+
+					// Simple parallax effect
+					$('#portfoliolist .portfolio').hover(
+						function () {
+							$(this).find('.label').stop().animate({ bottom: 0 }, 200, 'easeOutQuad');
+							$(this).find('img').stop().animate({ top: -30 }, 500, 'easeOutQuad');
+						},
+						function () {
+							$(this).find('.label').stop().animate({ bottom: -40 }, 200, 'easeInQuad');
+							$(this).find('img').stop().animate({ top: 0 }, 300, 'easeOutQuad');
+						}
+					);
+
+				}
+
+			};
+
+			// Run the show!
+			filterList.init();
+
+
+		});	
+	</script>
+
+	<script src="https://kit.fontawesome.com/721abd87bb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<!-- header-section-starts -->
+	<div class="header box css3-shadow" id="head">
+		<div class="container">
+			<div class="header-top">
+				<div class="logo wow bounceInLeft" data-wow-delay="0.4s">
+					<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				</div>
+				<div class="h_menu4"><!-- start h_menu4 -->
+					<a class="toggleMenu" href="#">Menu</a>
+					<ul class="nav">
+						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="index.html">About</a></li>
+						<li><a href="portfolio.html">Portfolio</a>
+						<li><a href="feature.html">Features</a>
+							<ul>
+								<li><a href="feature.html">Typography</a></li>
+								<li><a href="feature.html">Shortcodes</a></li>
+								<li><a href="feature.html">Columns</a></li>
+								<li><a href="feature.html">Pricing plans</a></li>
+								<li><a href="feature.html">Alerts</a></li>
+								<li><a href="feature.html">Services</a></li>
+							</ul>
+						</li>
+						<li><a href="index.html">Blog</a></li>
+						<li><a href="contact.html">Contact</a></li>
+
+					</ul>
+					<script type="text/javascript" src="js/nav.js"></script>
+				</div><!-- end h_menu4 -->
+				<div class="social_icons wow bounceInRight" data-wow-delay="0.4s">
+					<ul>
+						<li><a href="#"><i class="facebook"></i></a></li>
+						<li><a href="#"><i class="twitter"></i></a></li>
+						<li><a href="#"><i class="rss"></i></a></li>
+						<li><a href="#"><i class="viemo"></i></a></li>
+						<li><a href="#"><i class="youtube"></i></a></li>
+						<li><a href="#"><i class="linkedin"></i></a></li>
+					</ul>
+				</div>
+
+				<div class="clearfix"> </div>
+
+			</div><!-- end header_main4 -->
+		</div>
+	</div>
+
+	<!--work section-->
+	<section id="works">
+		<h2>Recent Works</h2>
+		<div id="work-container">
+			<div class="work-child">
+				<video src="videos/sample.mp4" muted loop autoplay></video>
+				<h4>Name: 2023 Predictions</h4>
+				<h5>Created for @experment_ar</h5>
+				<p style="margin: 30px;">The retro themed game effect provides an fun experience to the user by letting
+					them avoid obstacles
+					and completing the year 2023 on a funny note.</p>
+				<img src="images/qr/704114001343569-qr.png" alt="">
+				<button>
+					<a href="https://www.instagram.com/ar/704114001343569" target="_blank">View <i
+							class="fa-solid fa-eye fa-beat-fade"></i></a>
+				</button>
+			</div>
+			<div class="work-child">
+				<video src="videos/sample.mp4" muted loop autoplay></video>
+				<h4>Name: Name:- TGISF 2022 👟</h4>
+				<h5>Created for @indiansneakerfestival</h5>
+				<p style="margin: 30px;">The effect teleports the user to a virtual world filled with sneek peeks of
+					whats gonna happen at The great indian sneaker festival.</p>
+				<img src="images/qr/442012424523525-qr.png" alt="">
+				<button>
+					<a href="https://www.instagram.com/ar/442012424523525" target="_blank">View <i
+							class="fa-solid fa-eye fa-beat-fade"></i></a>
+				</button>
+			</div>
+			<div class="work-child">
+				<video src="videos/sample.mp4" muted loop autoplay></video>
+				<h4>Name: Glitch Compression</h4>
+				<h5>Created for @extraakash</h5>
+				<p style="margin: 30px;">The effect creates a glitched compression live feed from the users camera to
+					simulate compression shaders. The whole experience is created in just 3.7kb.</p>
+				<img src="images/qr/680955473250668-qr.png" alt="">
+				<button>
+					<a href="https://www.instagram.com/ar/680955473250668" target="_blank">View <i
+							class="fa-solid fa-eye fa-beat-fade"></i></a>
+				</button>
+			</div>
+		</div>
+	</section>
+	<!--work section-->
+	<!--/start-footer-section-->
+	<div class="footer-section">
+		<div class="container">
+			<div class="footer-grids wow bounceIn animated" data-wow-delay="0.4s">
+				<div class="col-md-3 footer-grid">
+					<h4>About studeon</h4>
+					<div class="border2"></div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque, at convallis
+						est felis.</p>
+					<p class="sub">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id arcu neque,
+						at convallis est felis.</p>
+				</div>
+				<div class="col-md-3 footer-grid tags">
+					<h4>the tags</h4>
+					<div class="border2"></div>
+					<ul class="tag">
+						<li><a href="#">Awesome</a></li>
+						<li><a href="#">Strategy</a></li>
+						<li><a href="#">Photography</a></li>
+						<li><a href="#">Development</a></li>
+						<li><a href="#">Css</a></li>
+						<li><a href="#">photoshop</a></li>
+						<li><a href="#">Html</a></li>
+						<li><a href="#">Awesome</a></li>
+						<li><a href="#">Strategy</a></li>
+						<li><a href="#">Photoshop</a></li>
+						<li><a href="#">Html</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid tweet">
+					<h4>latest tweets</h4>
+					<div class="border2"></div>
+					<div class="icon-3-square">
+						<a href="#"><i class="square-3"></i></a>
+					</div>
+					<div class="icon-text">
+						<p>I like this awesome freebie. Check it out<a href="#"> @http://t.co/9vslJFpW </a></p>
+						<h5>About 15 mins</h5>
+					</div>
+					<div class="clearfix"></div>
+					<div class="icon-3-square">
+						<a href="#"><i class="square-3"></i></a>
+					</div>
+					<div class="icon-text">
+						<p>I like this awesome freebie. Check it out<a href="#"> @http://t.co/9vslJFpW </a></p>
+						<h5>About 15 mins</h5>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-3 footer-grid flickr">
+					<h4>flickr feed</h4>
+					<div class="border2"></div>
+					<div class="flickr-grids">
+						<div class="flickr-grid">
+							<a href="#"><img src="images/f1.png" alt=" " title="CEO" /></a>
+						</div>
+						<div class="flickr-grid">
+							<a href="#"><img src="images/f2.png" alt=" " title="GM" /></a>
+						</div>
+						<div class="flickr-grid">
+							<a href="#"><img src="images/f3.png" alt=" " title="CEO" /></a>
+						</div>
+						<div class="clearfix"> </div>
+
+						<div class="flickr-grid">
+							<a href="#"><img src="images/f4.png" alt=" " title="GM" /></a>
+						</div>
+						<div class="flickr-grid">
+							<a href="#"><img src="images/f3.png" alt=" " title="CEO" /></a>
+						</div>
+						<div class="flickr-grid">
+							<a href="#"><img src="images/f2.png" alt=" " title="GM" /></a>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--//end-footer-section-->
+	<!--/start-copyright-section-->
+	<div class="copyright">
+		<div class="container">
+			<div class="logo2  wow bounceInLeft" data-wow-delay="0.4s"><a href="index.html"><img src="images/logo2.png"
+						alt="" / title="logo" /></a></div>
+			<p class="write  wow bounceInRight" data-wow-delay="0.4s">Copyright &copy; 2015 All rights Reserved |
+				Template by &nbsp;<a href="http://w3layouts.com">W3layouts</a></p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+	<!--//end-copyright-section-->
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			});
+		});
+	</script>
+	<!--start-smoth-scrolling-->
+	<script type="text/javascript">
+		$(document).ready(function () {
+			/*
+			var defaults = {
+					containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+	</script>
+	<a href="#head" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;">
+		</span></a>
+
+
+
+</body>
+
+</html>
