@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Disallow: /project/
+Sitemap: https://about.coderharsh.in/sitemap.xml
