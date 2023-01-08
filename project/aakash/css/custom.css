@@ -29,7 +29,7 @@
   z-index: 50000000;
 }
 .work-child:hover {
-  border: 1px solid black;
+  box-shadow: 10px 15px 30px #3f3c3c, -15px -15px 30px #e6c3c3;
 }
 .work-child h4 {
   font-weight: bolder;
