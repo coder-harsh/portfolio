@@ -2,7 +2,7 @@
   text-align: center;
   margin: 10px;
 }
-#work-container {
+.work-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -37,8 +37,10 @@
 .work-child button {
   border-radius: 12px;
   background-color: aquamarine;
-  border-color: 1px solid black;
+  border: 1px solid black;
   margin: 10px;
+  box-shadow: 3px 3px 12px black;
+  padding: 6px;
 }
 .work-child button:hover {
   background-color: white;
@@ -50,7 +52,7 @@
   text-decoration: none;
 }
 @media screen and (max-width: 1200px) {
-  #work-container {
+  .work-container {
     flex-direction: column;
   }
   .work-child video {
@@ -70,4 +72,22 @@
   box-shadow: 3px 3px 12px black;
   padding: 12px;
   border-radius: 8px;
+}
+
+/* #personal-head {
+  color: royalblue;
+}
+#client-head {
+  color: royalblue;
+  display: none;
+}
+#collab-head {
+  color: royalblue;
+  display: none;
+} */
+#client-container {
+  display: none;
+}
+#collab-container {
+  display: none;
 }
