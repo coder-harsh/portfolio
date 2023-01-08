@@ -57,3 +57,16 @@
     width: 100vw;
   }
 }
+#cat {
+  z-index: 500000;
+  display: flex;
+  justify-content: center;
+}
+#cat button {
+  margin: 5px;
+  z-index: 500000;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 3px 3px 12px black;
+  padding: 12px;
+}
